@@ -139,7 +139,7 @@ const SubmissionForm = () => {
     handleSubmit,
   } = useForm();
 
-  const gaEventTracker = useAnalyticsEventTracker('Contact us');
+  const gaEventTracker = useAnalyticsEventTracker('Contact Us');
 
 
   const onSubmit = async (data) => {
@@ -158,7 +158,6 @@ const SubmissionForm = () => {
     };
 
     const res = await axios.post("/api/users/register", data, config);
-    console.log(res);
     if (res.data.result === 0) toast.error("Your info has been already submitted.");
     else if (res.data.result === 1)
       toast.info("Your info has been successfully submitted.");
