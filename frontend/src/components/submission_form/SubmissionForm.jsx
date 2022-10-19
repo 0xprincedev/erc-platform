@@ -161,7 +161,6 @@ const SubmissionForm = () => {
       toast.error("Your info has been already submitted.");
     else if (res.data.result === 1) {
       toast.info("Your info has been successfully submitted.");
-      window.lintrk('track', { conversion_id: 10102970 });        
     }
   };
 
