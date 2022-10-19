@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
-import useAnalyticsEventTracker from 'hooks';
+import useAnalyticsEventTracker from "hooks";
 import "react-toastify/dist/ReactToastify.css";
 import "./SubmissionForm.scss";
 
@@ -44,7 +44,10 @@ const LegalBusinessName = ({ id, label, register, required }) => (
 const NumberOfW2 = ({ id, label, register, required }) => (
   <>
     <label>{label}</label>
-    <input {...register(id, { required })} placeholder="e.g. 23 (greater than 4)" />
+    <input
+      {...register(id, { required })}
+      placeholder="e.g. 23 (greater than 4)"
+    />
   </>
 );
 
@@ -139,14 +142,13 @@ const SubmissionForm = () => {
     handleSubmit,
   } = useForm();
 
-  const gaEventTracker = useAnalyticsEventTracker('Contact Us');
-
+  const gaEventTracker = useAnalyticsEventTracker("Contact Us");
 
   const onSubmit = async (data) => {
     // window.location.href =
     //   "https://bottomlinesavings.referralrock.com/l/MICHAELKORN/";
 
-    if (data.numberOfW2 < 5 ) {
+    if (data.numberOfW2 < 5) {
       toast.error("Please input the number greater than 4.");
       return;
     }
@@ -158,10 +160,13 @@ const SubmissionForm = () => {
     };
 
     const res = await axios.post("/api/users/register", data, config);
-    if (res.data.result === 0) toast.error("Your info has been already submitted.");
-    else if (res.data.result === 1)
+    if (res.data.result === 0)
+      toast.error("Your info has been already submitted.");
+    else if (res.data.result === 1) {
       toast.info("Your info has been successfully submitted.");
-      gaEventTracker('email');
+      window.lintrk('track', { conversion_id: 10102970 });        
+      gaEventTracker("email");
+    }
   };
 
   return (

@@ -7,8 +7,7 @@ const Home = lazy(() => import("pages/home"));
 const Client = lazy(() => import("pages/client"));
 const Error = lazy(() => import("pages/error"));
 
-const TRACKING_ID = "UA-243699135-1"; // OUR_TRACKING_ID
-
+const TRACKING_ID = "UA-243699135-1"; 
 ReactGA.initialize(TRACKING_ID);
 
 const history = createBrowserHistory();
