@@ -53,9 +53,6 @@ const Home = () => {
       <BottomLineConcepts />
       <SubmissionForm />
       <Footer visible={visible} />
-      {/* <div className="ad-class">
-        <GoogleAds slot="8671681688" />
-      </div> */}
       
     </>
   );

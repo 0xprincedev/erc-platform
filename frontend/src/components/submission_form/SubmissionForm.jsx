@@ -2,7 +2,6 @@ import { forwardRef } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
-import useAnalyticsEventTracker from "hooks";
 import "react-toastify/dist/ReactToastify.css";
 import "./SubmissionForm.scss";
 
@@ -142,8 +141,6 @@ const SubmissionForm = () => {
     handleSubmit,
   } = useForm();
 
-  const gaEventTracker = useAnalyticsEventTracker("Contact Us");
-
   const onSubmit = async (data) => {
     // window.location.href =
     //   "https://bottomlinesavings.referralrock.com/l/MICHAELKORN/";
@@ -165,7 +162,6 @@ const SubmissionForm = () => {
     else if (res.data.result === 1) {
       toast.info("Your info has been successfully submitted.");
       window.lintrk('track', { conversion_id: 10102970 });        
-      gaEventTracker("email");
     }
   };
 
