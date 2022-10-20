@@ -72,6 +72,34 @@
 
     <!-- End Google Adverse -->
 
+    <!-- Reddit Pixel -->
+    <script>
+      !(function (w, d) {
+        if (!w.rdt) {
+          var p = (w.rdt = function () {
+            p.sendEvent
+              ? p.sendEvent.apply(p, arguments)
+              : p.callQueue.push(arguments);
+          });
+          p.callQueue = [];
+          var t = d.createElement("script");
+          (t.src = "https://www.redditstatic.com/ads/pixel.js"), (t.async = !0);
+          var s = d.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(t, s);
+        }
+      })(window, document);
+      rdt("init", "t2_a1hrv4wf", {
+        optOut: false,
+        useDecimalCurrencyValues: true,
+        aaid: "<AAID-HERE>",
+        email: "<EMAIL-HERE>",
+        externalId: "<EXTERNAL-ID-HERE>",
+        idfa: "<IDFA-HERE>",
+      });
+      rdt("track", "PageVisit");
+    </script>
+    <!-- End Reddit Pixel -->
+
     <!-- Microsoft Bing -->
     <script>
       (function (d, s, i) {
@@ -86,7 +114,7 @@
 
     <!-- LinkedIn Track -->
     <script type="text/javascript">
-      _linkedin_partner_id = "<pixelId>";
+      _linkedin_partner_id = "10102970";
       window._linkedin_data_partner_ids =
         window._linkedin_data_partner_ids || [];
       window._linkedin_data_partner_ids.push(_linkedin_partner_id);
