@@ -160,8 +160,10 @@ const SubmissionForm = () => {
     if (res.data.result === 0)
       toast.error("Your info has been already submitted.");
     else if (res.data.result === 1) {
-      window.lintrk('track', { conversion_id: 10102970 }); 
-      toast.info("Your info has been successfully submitted.");
+      window.lintrk("track", { conversion_id: 10102970 });
+
+      window.location.href =
+        "https://calendly.com/bls-erc/ercintro?utm_medium=99460";
     }
   };
 
