@@ -5,6 +5,84 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import "./SubmissionForm.scss";
 
+const industryList = [
+  { value: "Accounting Firm" },
+  { value: "Agriculture" },
+  { value: "Advertising Agency" },
+  { value: "Aerospace &amp; Defense" },
+  { value: "Apparel" },
+  { value: "Architecture Firm" },
+  { value: "Automotive" },
+  { value: "Aviation" },
+  { value: "Bank" },
+  { value: "Bars/Nightclubs" },
+  { value: "Beauty/Cosmetics" },
+  { value: "Business Consulting" },
+  { value: "Cannabis" },
+  { value: "Casino" },
+  { value: "Computer Software" },
+  { value: "Construction" },
+  { value: "Country Club" },
+  { value: "Doctor" },
+  { value: "E-Commerce" },
+  { value: "Education" },
+  { value: "Electronics" },
+  { value: "Employee Benefits" },
+  { value: "Energy" },
+  { value: "Entertainment" },
+  { value: "Financial Services" },
+  { value: "Fitness" },
+  { value: "Food &amp; Beverage" },
+  { value: "Gas Stations" },
+  { value: "Healthcare" },
+  { value: "Hospitals" },
+  { value: "Hotel Group" },
+  { value: "Industrial" },
+  { value: "Insurance Broke" },
+  { value: "Insurance Company" },
+  { value: "Investment Firm" },
+  { value: "Law Firm" },
+  { value: "Maintenance" },
+  { value: "Manufacturer" },
+  { value: "Marketing Firm" },
+  { value: "Media" },
+  { value: "Medical Equipment" },
+  { value: "Merchant Services" },
+  { value: "Moving/Storage" },
+  { value: "Municipality" },
+  { value: "Non-Profit" },
+  { value: "Nursing Home" },
+  { value: "Office Supplies" },
+  { value: "Packaging" },
+  { value: "Parking Garage" },
+  { value: "Payroll" },
+  { value: "Pet Care" },
+  { value: "Pharmaceutical" },
+  { value: "Press" },
+  { value: "Private Equity" },
+  { value: "Property Management" },
+  { value: "Public Relations" },
+  { value: "Publishing" },
+  { value: "Real Estate" },
+  { value: "Recruiting/Staffing" },
+  { value: "Religious" },
+  { value: "Restaurant Group" },
+  { value: "Retail" },
+  { value: "Risk Management" },
+  { value: "Security" },
+  { value: "Spa" },
+  { value: "Sports" },
+  { value: "Supermarket" },
+  { value: "Technology Company" },
+  { value: "Telecommunications" },
+  { value: "Title Insurance" },
+  { value: "Transportation" },
+  { value: "Union" },
+  { value: "University" },
+  { value: "Waste Management" },
+  { value: "Wholesaler" },
+];
+
 const FirstName = ({ id, label, register, required }) => (
   <>
     <label>{label}</label>
@@ -55,81 +133,13 @@ const Industry = forwardRef(({ onChange, name, label }, ref) => (
     <label>{label}</label>
     <select name={name} ref={ref} onChange={onChange}>
       <option value=""> Please Select </option>
-      <option value="Accounting Firm"> Accounting Firm </option>
-      <option value="Agriculture"> Agriculture </option>
-      <option value="Advertising Agency"> Advertising Agency </option>
-      <option value="Aerospace &amp; Defense"> Aerospace &amp; Defense </option>
-      <option value="Apparel"> Apparel </option>
-      <option value="Architecture Firm"> Architecture Firm </option>
-      <option value="Automotive"> Automotive </option>
-      <option value="Aviation"> Aviation </option>
-      <option value="Bank"> Bank </option>
-      <option value="Bars/Nightclubs"> Bars/Nightclubs </option>
-      <option value="Beauty/Cosmetics"> Beauty/Cosmetics </option>
-      <option value="Business Consulting"> Business Consulting </option>
-      <option value="Cannabis"> Cannabis </option>
-      <option value="Casino"> Casino </option>
-      <option value="Computer Software"> Computer Software </option>
-      <option value="Construction"> Construction </option>
-      <option value="Country Club"> Country Club </option>
-      <option value="Doctor's Office"> Doctor's Office </option>
-      <option value="E-Commerce"> E-Commerce </option>
-      <option value="Education"> Education </option>
-      <option value="Electronics"> Electronics </option>
-      <option value="Employee Benefits"> Employee Benefits </option>
-      <option value="Energy"> Energy </option>
-      <option value="Entertainment"> Entertainment </option>
-      <option value="Financial Services"> Financial Services </option>
-      <option value="Fitness"> Fitness </option>
-      <option value="Food &amp; Beverage"> Food &amp; Beverage </option>
-      <option value="Gas Stations"> Gas Stations </option>
-      <option value="Healthcare"> Healthcare </option>
-      <option value="Hospitals"> Hospitals </option>
-      <option value="Hotel Group"> Hotel Group </option>
-      <option value="Industrial"> Industrial </option>
-      <option value="Insurance Broker"> Insurance Broker </option>
-      <option value="Insurance Company"> Insurance Company </option>
-      <option value="Investment Firm"> Investment Firm </option>
-      <option value="Law Firm"> Law Firm </option>
-      <option value="Maintenance"> Maintenance </option>
-      <option value="Manufacturer"> Manufacturer </option>
-      <option value="Marketing Firm"> Marketing Firm </option>
-      <option value="Media"> Media </option>
-      <option value="Medical Equipment"> Medical Equipment </option>
-      <option value="Merchant Services"> Merchant Services </option>
-      <option value="Moving/Storage"> Moving/Storage </option>
-      <option value="Municipality"> Municipality </option>
-      <option value="Non-Profit"> Non-Profit </option>
-      <option value="Nursing Home"> Nursing Home </option>
-      <option value="Office Supplies"> Office Supplies </option>
-      <option value="Packaging"> Packaging </option>
-      <option value="Parking Garage"> Parking Garage </option>
-      <option value="Payroll"> Payroll </option>
-      <option value="Pet Care"> Pet Care </option>
-      <option value="Pharmaceutical"> Pharmaceutical </option>
-      <option value="Press"> Press </option>
-      <option value="Private Equity"> Private Equity </option>
-      <option value="Property Management"> Property Management </option>
-      <option value="Public Relations"> Public Relations </option>
-      <option value="Publishing"> Publishing </option>
-      <option value="Real Estate"> Real Estate </option>
-      <option value="Recruiting/Staffing"> Recruiting/Staffing </option>
-      <option value="Religious"> Religious </option>
-      <option value="Restaurant Group"> Restaurant Group </option>
-      <option value="Retail"> Retail </option>
-      <option value="Risk Management"> Risk Management </option>
-      <option value="Security"> Security </option>
-      <option value="Spa"> Spa </option>
-      <option value="Sports"> Sports </option>
-      <option value="Supermarket"> Supermarket </option>
-      <option value="Technology Company"> Technology Company </option>
-      <option value="Telecommunications"> Telecommunications </option>
-      <option value="Title Insurance"> Title Insurance </option>
-      <option value="Transportation"> Transportation </option>
-      <option value="Union"> Union </option>
-      <option value="University"> University </option>
-      <option value="Waste Management"> Waste Management </option>
-      <option value="Wholesaler"> Wholesaler </option>
+      {industryList.map((item, index) => {
+        return (
+          <option key={`industry_${index}`} value={item.value}>
+            {item.value}
+          </option>
+        );
+      })}
     </select>
   </>
 ));
@@ -176,8 +186,9 @@ const SubmissionForm = () => {
             ERC Submission Form
           </h2>
           <h5 className="text-[#57647E] font-medium">
-            Please fill out this form and one of our ERC specialists will
-            contact you.
+            Please fill out this form. After you submit your information, make
+            an appointment with one of our trusted ERC advisors on the calendar
+            that will appear.
           </h5>
           <form
             className="max-w-[600px] mx-0 my-auto mt-8"
