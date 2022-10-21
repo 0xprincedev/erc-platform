@@ -25,12 +25,16 @@ const registerUser = asyncHandler(async (req, res) => {
   db.data = db.data || { users: [] };
 
   const { users } = db.data;
-  let okay = true;
 
   for (let i = 0; i < users.length; i++) {
+    let okay = true;
+
     for (let key of Object.keys(users[i])) {
-      if (users[i][key] != req.body[key]) okay = false;
+      if (users[i][key] != req.body[key]) {
+        okay = false;
+      }
     }
+
     if (okay == true) {
       res.status(201).json({ result: 0 });
       return;
