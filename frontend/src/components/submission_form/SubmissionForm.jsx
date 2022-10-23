@@ -152,9 +152,6 @@ const SubmissionForm = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // window.location.href =
-    //   "https://bottomlinesavings.referralrock.com/l/MICHAELKORN/";
-
     if (data.numberOfW2 < 5) {
       toast.error("Please input the number greater than 4.");
       return;
@@ -167,13 +164,13 @@ const SubmissionForm = () => {
     };
 
     const res = await axios.post("/api/users/register", data, config);
+    
     if (res.data.result === 0)
       toast.error("Your info has been already submitted.");
     else if (res.data.result === 1) {
+      toast.info("Your information has been successfully submitted.");
       window.lintrk("track", { conversion_id: 10102970 });
-
-      window.location.href =
-        "https://calendly.com/bls-erc/ercintro?utm_medium=99460";
+      window.open("https://calendly.com/bls-erc/ercintro?utm_medium=99460");
     }
   };
 
