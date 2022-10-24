@@ -11,7 +11,6 @@ import ContactUs from "components/contact_us";
 import Testimonials from "components/testimonials";
 import BottomLineConcepts from "components/bottom_line_concepts";
 import SubmissionForm from "components/submission_form";
-import GoogleAds from "components/GoogleAds";
 import Abouterc from "components/about_erc";
 
 const Home = () => {

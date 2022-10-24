@@ -1,87 +1,11 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
+import RedditPixel from "react-reddit-pixel";
 import "react-toastify/dist/ReactToastify.css";
 import "./SubmissionForm.scss";
-
-const industryList = [
-  { value: "Accounting Firm" },
-  { value: "Agriculture" },
-  { value: "Advertising Agency" },
-  { value: "Aerospace &amp; Defense" },
-  { value: "Apparel" },
-  { value: "Architecture Firm" },
-  { value: "Automotive" },
-  { value: "Aviation" },
-  { value: "Bank" },
-  { value: "Bars/Nightclubs" },
-  { value: "Beauty/Cosmetics" },
-  { value: "Business Consulting" },
-  { value: "Cannabis" },
-  { value: "Casino" },
-  { value: "Computer Software" },
-  { value: "Construction" },
-  { value: "Country Club" },
-  { value: "Doctor" },
-  { value: "E-Commerce" },
-  { value: "Education" },
-  { value: "Electronics" },
-  { value: "Employee Benefits" },
-  { value: "Energy" },
-  { value: "Entertainment" },
-  { value: "Financial Services" },
-  { value: "Fitness" },
-  { value: "Food &amp; Beverage" },
-  { value: "Gas Stations" },
-  { value: "Healthcare" },
-  { value: "Hospitals" },
-  { value: "Hotel Group" },
-  { value: "Industrial" },
-  { value: "Insurance Broke" },
-  { value: "Insurance Company" },
-  { value: "Investment Firm" },
-  { value: "Law Firm" },
-  { value: "Maintenance" },
-  { value: "Manufacturer" },
-  { value: "Marketing Firm" },
-  { value: "Media" },
-  { value: "Medical Equipment" },
-  { value: "Merchant Services" },
-  { value: "Moving/Storage" },
-  { value: "Municipality" },
-  { value: "Non-Profit" },
-  { value: "Nursing Home" },
-  { value: "Office Supplies" },
-  { value: "Packaging" },
-  { value: "Parking Garage" },
-  { value: "Payroll" },
-  { value: "Pet Care" },
-  { value: "Pharmaceutical" },
-  { value: "Press" },
-  { value: "Private Equity" },
-  { value: "Property Management" },
-  { value: "Public Relations" },
-  { value: "Publishing" },
-  { value: "Real Estate" },
-  { value: "Recruiting/Staffing" },
-  { value: "Religious" },
-  { value: "Restaurant Group" },
-  { value: "Retail" },
-  { value: "Risk Management" },
-  { value: "Security" },
-  { value: "Spa" },
-  { value: "Sports" },
-  { value: "Supermarket" },
-  { value: "Technology Company" },
-  { value: "Telecommunications" },
-  { value: "Title Insurance" },
-  { value: "Transportation" },
-  { value: "Union" },
-  { value: "University" },
-  { value: "Waste Management" },
-  { value: "Wholesaler" },
-];
+import { industryList } from "constants";
 
 const FirstName = ({ id, label, register, required }) => (
   <>
@@ -151,6 +75,14 @@ const SubmissionForm = () => {
     handleSubmit,
   } = useForm();
 
+  useEffect(() => {
+    const options = {
+      debug: false, // set true to enable logs
+    };
+    RedditPixel.init("t2_a1hrv4wf", options);
+    RedditPixel.pageVisit();
+  });
+
   const onSubmit = async (data) => {
     if (data.numberOfW2 < 5) {
       toast.error("Please input the number greater than 4.");
@@ -164,12 +96,13 @@ const SubmissionForm = () => {
     };
 
     const res = await axios.post("/api/users/register", data, config);
-    
+
     if (res.data.result === 0)
       toast.error("Your info has been already submitted.");
     else if (res.data.result === 1) {
       toast.info("Your information has been successfully submitted.");
       window.lintrk("track", { conversion_id: 10102970 });
+      RedditPixel.track("SignUp");
       window.open("https://calendly.com/bls-erc/ercintro?utm_medium=99460");
     }
   };

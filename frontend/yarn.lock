@@ -7482,6 +7482,11 @@ react-player@^2.11.0:
     prop-types "^15.7.2"
     react-fast-compare "^3.0.1"
 
+react-reddit-pixel@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-reddit-pixel/-/react-reddit-pixel-1.0.0.tgz#a144bb789ce8f3c6926af224c8a7d5e9b656f33e"
+  integrity sha512-21RbT9NaFAug4GKIPzAqvZQdN5vP0riwjY4XqAfmUlGuu8WzxCy2s9V4HyHkg8Bfw550RkMI+uvTKh/5hwHigw==
+
 react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"

@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import CountUp from "react-countup";
 import "./OurResults.scss";
 
