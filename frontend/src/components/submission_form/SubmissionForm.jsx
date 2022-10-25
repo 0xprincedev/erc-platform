@@ -1,11 +1,14 @@
+import RedditPixel from "react-reddit-pixel";
+import TagManager from "react-gtm-module";
+
 import { forwardRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
-import RedditPixel from "react-reddit-pixel";
+import { industryList } from "constants";
+
 import "react-toastify/dist/ReactToastify.css";
 import "./SubmissionForm.scss";
-import { industryList } from "constants";
 
 const FirstName = ({ id, label, register, required }) => (
   <>
@@ -81,6 +84,12 @@ const SubmissionForm = () => {
     };
     RedditPixel.init("t2_a1hrv4wf", options);
     RedditPixel.pageVisit();
+
+    const tagManagerArgs = {
+      gtmId: "G-C91L4M4SBX",
+    };
+
+    TagManager.initialize(tagManagerArgs);
   });
 
   const onSubmit = async (data) => {
@@ -103,6 +112,14 @@ const SubmissionForm = () => {
       toast.info("Your information has been successfully submitted.");
       window.lintrk("track", { conversion_id: 10102970 });
       RedditPixel.track("SignUp");
+
+      window.dataLayer.push({
+        event: "event",
+        eventProps: {
+          label: "SignUp",
+        },
+      });
+      
       window.open("https://calendly.com/bls-erc/ercintro?utm_medium=99460");
     }
   };
