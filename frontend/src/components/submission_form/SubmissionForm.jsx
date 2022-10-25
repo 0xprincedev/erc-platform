@@ -1,5 +1,4 @@
 import RedditPixel from "react-reddit-pixel";
-import TagManager from "react-gtm-module";
 
 import { forwardRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -84,12 +83,6 @@ const SubmissionForm = () => {
     };
     RedditPixel.init("t2_a1hrv4wf", options);
     RedditPixel.pageVisit();
-
-    const tagManagerArgs = {
-      gtmId: "G-C91L4M4SBX",
-    };
-
-    TagManager.initialize(tagManagerArgs);
   });
 
   const onSubmit = async (data) => {
