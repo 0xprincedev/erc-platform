@@ -97,30 +97,29 @@ const SubmissionForm = () => {
       },
     };
 
-    // const res = await axios.post("/api/users/register", data, config);
+    const res = await axios.post("/api/users/register", data, config);
 
-    window.gtag("event", "conversion", {
-      send_to: "AW-10996870408/gsz5CPXUpYAYEIja2_so",
-    });
+  
+    if (res.data.result === 0)
+      toast.error("Your info has been already submitted.");
+    else if (res.data.result === 1) {
+      toast.info("Your information has been successfully submitted.");
+      window.lintrk("track", { conversion_id: 10102970 });
+      RedditPixel.track("SignUp");
 
-    // if (res.data.result === 0)
-    //   toast.error("Your info has been already submitted.");
-    // else if (res.data.result === 1) {
-    //   toast.info("Your information has been successfully submitted.");
-    //   window.lintrk("track", { conversion_id: 10102970 });
-    //   RedditPixel.track("SignUp");
+      window.dataLayer.push({
+        event: "event",
+        eventProps: {
+          label: "SignUp",
+        },
+      });
 
-    //   window.dataLayer.push({
-    //     event: "event",
-    //     eventProps: {
-    //       label: "SignUp",
-    //     },
-    //   });
+      window.gtag("event", "conversion", {
+        send_to: "AW-10996870408/gsz5CPXUpYAYEIja2_so",
+      });
 
-      
-
-    //   window.open("https://calendly.com/bls-erc/ercintro?utm_medium=99460");
-    // }
+      window.open("https://calendly.com/bls-erc/ercintro?utm_medium=99460");
+    }
   };
 
   return (
