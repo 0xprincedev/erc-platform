@@ -1,7 +1,7 @@
 .submission-form {
   background-image: url(https://ercblc.com/wp-content/uploads/2022/08/help-ERC-scaled.jpeg);
   background-color: #bedf8f;
-  @apply relative bg-center bg-cover p-14;
+  @apply relative bg-center bg-cover md:p-12;
 
   .overlay {
     background-color: transparent;

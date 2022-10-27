@@ -44,15 +44,16 @@ const LegalBusinessName = ({ id, label, register, required }) => (
   </>
 );
 
-const NumberOfW2 = ({ id, label, register, required }) => (
+const NumberOfW2 = forwardRef(({ onChange, name, label }, ref) => (
   <>
     <label>{label}</label>
-    <input
-      {...register(id, { required })}
-      placeholder="e.g. 23 (greater than 4)"
-    />
+    <select name={name} ref={ref} onChange={onChange}>
+      <option value="Less than 5">Less than 5</option>
+      <option value="5-99 employees">5-99 employees</option>
+      <option value="100+ employees">100+ employees</option>
+    </select>
   </>
-);
+));
 
 const Industry = forwardRef(({ onChange, name, label }, ref) => (
   <>
@@ -86,8 +87,8 @@ const SubmissionForm = () => {
   });
 
   const onSubmit = async (data) => {
-    if (data.numberOfW2 < 5) {
-      toast.error("Please input the number greater than 4.");
+    if (data.numberOfW2 === "Less than 5") {
+      toast.error("Your company may be eligible for the ERC program but currently we are only accepting applications for businesses with 5 or more w-2 employees.");
       return;
     }
 
@@ -99,7 +100,6 @@ const SubmissionForm = () => {
 
     const res = await axios.post("/api/users/register", data, config);
 
-  
     if (res.data.result === 0)
       toast.error("Your info has been already submitted.");
     else if (res.data.result === 1) {
@@ -126,7 +126,7 @@ const SubmissionForm = () => {
     <div id="submissionForm" className="submission-form">
       <div className="overlay" />
       <div className="relative bg-white max-w-6xl mx-auto">
-        <div className="px-12 py-10 max-w-[586px] w-full mx-auto">
+        <div className="px-12 py-10 max-w-[640px] w-full mx-auto">
           <h2 className="text-[32px] text-[#333333] font-bold">
             ERC Submission Form
           </h2>
@@ -201,14 +201,9 @@ const SubmissionForm = () => {
               </div>
               <div className="mb-2">
                 <NumberOfW2
-                  id="numberOfW2"
-                  label="Number of W-2 Employees *"
-                  register={register}
-                  required
+                  label="Number of W-2 Employees in 2021 *"
+                  {...register("numberOfW2")}
                 />
-                {errors.numberOfW2?.type === "required" && (
-                  <p role="alert">Number of W-2 employees is required</p>
-                )}
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">

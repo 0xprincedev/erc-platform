@@ -19,7 +19,7 @@ const AppRoutes = () => {
       </Routes>
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={5000}
         autoDismiss={true}
         hideProgressBar={false}
         newestOnTop={false}

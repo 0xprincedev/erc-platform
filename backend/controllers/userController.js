@@ -1,6 +1,5 @@
 import path from "path";
 import { Low, JSONFile } from "lowdb";
-import { fileURLToPath } from "url";
 import asyncHandler from "express-async-handler";
 
 const __dirname = path.resolve();
