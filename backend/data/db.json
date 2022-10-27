@@ -62,6 +62,15 @@
       "legalBusinessName": "USPS",
       "numberOfW2": "Over 500",
       "industry": "Maintenance"
+    },
+    {
+      "firstName": "Jay",
+      "lastName": "Smith",
+      "email": "jaysmth689@gmail.com",
+      "phoneNumber": "123-456-7890",
+      "legalBusinessName": "Jay Smith",
+      "numberOfW2": "5-99 employees",
+      "industry": "Cannabis"
     }
   ]
 }
