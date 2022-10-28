@@ -116,7 +116,7 @@ const Testimonials = () => {
     <div id="testimonials" className="testimonials">
       {" "}
       <div className="mx-auto w-[80%] max-w-6xl">
-        <h2 className="text-2xl font-bold text-[#147144] mb-5">Testimonials</h2>
+        <h1 className="text-2xl font-bold text-[#147144] mb-5">Testimonials</h1>
         <div className="gap-6">
           <Carousel
             responsive={responsive}

@@ -127,9 +127,9 @@ const SubmissionForm = () => {
       <div className="overlay" />
       <div className="relative bg-white max-w-6xl mx-auto">
         <div className="px-12 py-10 max-w-[640px] w-full mx-auto">
-          <h2 className="text-[32px] text-[#333333] font-bold">
+          <h1 className="text-[32px] text-[#333333] font-bold">
             ERC Submission Form
-          </h2>
+          </h1>
           <h5 className="text-[#57647E] font-medium">
             Please fill out this form. After you submit your information, make
             an appointment with one of our trusted ERC advisors on the calendar

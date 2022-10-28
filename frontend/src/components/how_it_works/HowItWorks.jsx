@@ -5,9 +5,9 @@ const HowItWorks = () => {
   return (
     <div id="howItWorks" className="how-it-works">
       <div className="mx-auto text-center w-[80%] max-w-6xl">
-        <h2 className="text-[38px] text-[#478A6B] font-medium">
+        <h1 className="text-[38px] text-[#478A6B] font-medium">
           How It <strong>Works</strong>
-        </h2>
+        </h1>
         <p className="text-[18px] text-[#555555] font-medium tracking-wide">
           Watch our video to understand more about the ERC program and how we
           can help your business.
