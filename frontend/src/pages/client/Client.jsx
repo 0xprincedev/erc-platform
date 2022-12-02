@@ -14,7 +14,7 @@ const Client = () => {
       };
 
       const response = await axios.get(
-        "/api/records/get",
+        "http://localhost:5000/api/records/get",
         config
       );
 

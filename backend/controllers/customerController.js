@@ -8,7 +8,7 @@ const file = path.join(__dirname, "/backend/data/db.json");
 const adapter = new JSONFile(file);
 const db = new Low(adapter);
 
-const registerUser = asyncHandler(async (req, res) => {
+const registerCustomer = asyncHandler(async (req, res) => {
   const {
     firstName,
     lastName,
@@ -21,15 +21,15 @@ const registerUser = asyncHandler(async (req, res) => {
 
   await db.read();
 
-  db.data = db.data || { users: [] };
+  db.data = db.data || { customers: [] };
 
-  const { users } = db.data;
+  const { customers } = db.data;
 
-  for (let i = 0; i < users.length; i++) {
+  for (let i = 0; i < customers.length; i++) {
     let okay = true;
 
-    for (let key of Object.keys(users[i])) {
-      if (users[i][key] != req.body[key]) {
+    for (let key of Object.keys(customers[i])) {
+      if (customers[i][key] != req.body[key]) {
         okay = false;
       }
     }
@@ -40,7 +40,7 @@ const registerUser = asyncHandler(async (req, res) => {
     }
   }
 
-  users.push({
+  customers.push({
     firstName: firstName,
     lastName: lastName,
     email: email,
@@ -58,11 +58,11 @@ const registerUser = asyncHandler(async (req, res) => {
 const getRecord = asyncHandler(async (req, res) => {
   await db.read();
 
-  db.data ||= { users: [] };
+  db.data ||= { customers: [] };
 
-  const { users } = db.data;
+  const { customers } = db.data;
 
-  res.json(users);
+  res.json(customers);
 });
 
-export { registerUser, getRecord };
+export { registerCustomer, getRecord };

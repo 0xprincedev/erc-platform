@@ -3,11 +3,14 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
-import userRoutes from "./routes/userRoutes.js";
+import connectDB from "./config/db.js";
+import customerRoutes from "./routes/customerRoutes.js";
 import recordRoutes from "./routes/recordRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
+
+connectDB();
 
 const app = express();
 
@@ -18,7 +21,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/users", userRoutes);
+app.use("/api/customers", customerRoutes);
 app.use("/api/records", recordRoutes);
 
 const __dirname = path.resolve();
