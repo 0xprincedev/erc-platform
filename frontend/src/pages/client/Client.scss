@@ -1,21 +1,83 @@
-@media (min-width: 640px) {
-  table {
-    display: inline-table !important;
-  }
+// @media (min-width: 640px) {
+//   table {
+//     display: inline-table !important;
+//   }
 
-  thead tr:not(:first-child) {
-    display: none;
+//   thead tr:not(:first-child) {
+//     display: none;
+//   }
+// }
+
+
+.react-datepicker-wrapper {
+  border: 1px solid #000 !important;
+
+  input {
+    outline: none;
   }
 }
 
-td:not(:last-child) {
-  //   border-bottom: 0;
-  border-bottom: 1px solid #c8ccd2;
-  border-right: 1px solid #c8ccd2;
+table.customer {
+  tr {
+    cursor: default;
+  }
+
+  thead tr th {
+    @apply text-sm font-bold text-gray-900 px-6 py-4 text-left whitespace-nowrap;
+
+    &:first-child {
+      @apply text-center;
+    }
+  }
+
+  tbody tr.content {
+    @apply shadow-sm border-b-2;
+    @apply transition;
+
+    td {
+      text-align: center;
+      @apply px-6 py-3 whitespace-nowrap text-base font-normal text-left text-gray-900;
+
+      &:first-child {
+        @apply text-center;
+      }
+    }
+
+    &:hover {
+      @apply bg-[#e5e7eb] shadow-none;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    thead tr th {
+      @apply text-xs font-bold text-gray-900 px-4 py-3 text-center whitespace-nowrap;
+    }
+
+    tbody tr.content {
+
+      td {
+        text-align: center;
+        @apply px-4 py-2 whitespace-nowrap text-sm font-normal text-center text-gray-900;
+      }
+
+    }
+  }
 }
 
-th:not(:last-child) {
-  //   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #c8ccd2;
-  border-right: 1px solid #c8ccd2;
+.scroll {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #bbb;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+  }
 }

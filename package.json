@@ -1,29 +1,30 @@
 {
-  "name": "erc-platform",
-  "version": "1.0.0",
-  "description": "personal marketing website",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "start": "node backend/server",
-    "server": "nodemon backend/server",
-    "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "mkdev11",
-  "license": "MIT",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "colors": "^1.4.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "express-async-handler": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "lowdb": "^4.0.0",
-    "mongoose": "^6.7.5",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
-  }
+	"name": "erc-platform",
+	"version": "1.0.0",
+	"description": "personal marketing website",
+	"main": "server.js",
+	"type": "module",
+	"scripts": {
+		"start": "node backend/server",
+		"server": "nodemon backend/server",
+		"seed": "node backend/seeds",
+		"data:import": "node backend/seeder",
+		"data:destroy": "node backend/seeder -d",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "mkdev11",
+	"license": "MIT",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"colors": "^1.4.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"express-async-handler": "^1.2.0",
+		"jsonwebtoken": "^8.5.1",
+		"lowdb": "^4.0.0",
+		"mongoose": "^6.7.5",
+		"morgan": "^1.10.0",
+		"nodemon": "^2.0.20"
+	}
 }
