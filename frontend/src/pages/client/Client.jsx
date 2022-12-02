@@ -61,8 +61,8 @@ const Client = () => {
 	};
 
 	return (
-		<div className='mx-auto px-4 md:px-8'>
-			<h2 className='overflow-hidden mt-12 mb-3 text-center text-4xl font-extrabold tracking-widest text-[#192435] whitespace-nowrap'>
+		<div className='mx-auto px-4 md:px-8 font-[Poppins]'>
+			<h2 className='overflow-hidden mt-12 mb-3 text-center text-4xl font-extrabold tracking-widest text-[#006534] whitespace-nowrap'>
 				MICHAEL KORN
 			</h2>
 			<div className='relative flex mb-3'>
@@ -79,15 +79,17 @@ const Client = () => {
 						<DateRangePicker
 							ranges={[dateRange]}
 							onChange={handleSelectRange}
+							rangeColors='#006534'
+							color='#006534'
 							className='absolute z-50 right-0 top-[48px] shadow-md border'
 						/>
 						<div className='fixed top-0 left-0 w-screen h-screen z-10' onClick={() => setOpen(false)} />
 					</>
 				)}
 			</div>
-			<div className='flex flex-col overflow-scroll max-h-[calc(100vh-170px)] scroll'>
+			<div className='max-h-[calc(100vh-175px)] overflow-auto scroll'>
 				<table className='customer min-w-full'>
-					<thead className='sticky top-0 bg-slate-400 shadow-md'>
+					<thead className='sticky top-0 bg-[#006534] shadow-md text-white'>
 						<tr>
 							<th scope='col'>#</th>
 							<th scope='col'>Name</th>
