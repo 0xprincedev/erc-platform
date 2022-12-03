@@ -62,7 +62,7 @@ const Client = () => {
 
 	return (
 		<div className='mx-auto px-4 md:px-8 font-[Poppins]'>
-			<h2 className='overflow-hidden mt-12 mb-3 text-center text-4xl font-extrabold tracking-widest text-[#006534] whitespace-nowrap'>
+			<h2 className='overflow-hidden mt-12 mb-3 text-center text-5xl font-extrabold tracking-widest text-[#006534] whitespace-nowrap'>
 				MICHAEL KORN
 			</h2>
 			<div className='relative flex mb-3'>
@@ -87,8 +87,8 @@ const Client = () => {
 					</>
 				)}
 			</div>
-			<div className='max-h-[calc(100vh-175px)] overflow-auto scroll'>
-				<table className='customer min-w-full'>
+			<div className='max-h-[calc(100vh-190px)] overflow-auto scroll'>
+				<table className='customer shadow-sm min-w-full'>
 					<thead className='sticky top-0 bg-[#006534] shadow-md text-white'>
 						<tr>
 							<th scope='col'>#</th>
@@ -98,6 +98,7 @@ const Client = () => {
 							<th scope='col'>Legal Business Name</th>
 							<th scope='col'>Number of W-2 Employees</th>
 							<th scope='col'>Industry</th>
+							<th scope='col'>Created At</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -139,6 +140,7 @@ const Client = () => {
 											<td>{item.legalBusinessName}</td>
 											<td>{item.numberOfW2}</td>
 											<td>{item.industry}</td>
+											<td>{new Date(item.createdAt).toLocaleString()}</td>
 										</tr>
 									);
 								})

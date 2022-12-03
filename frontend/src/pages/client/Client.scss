@@ -39,7 +39,7 @@ table.customer {
 
     td {
       text-align: center;
-      @apply px-6 py-3 whitespace-nowrap text-sm text-left select-none;
+      @apply px-6 py-3 whitespace-nowrap text-xs text-left select-none;
 
       &:first-child {
         @apply text-center;
@@ -47,7 +47,7 @@ table.customer {
     }
 
     &:hover {
-      @apply bg-[#8Fd251] text-[#fff] shadow-none;
+      @apply shadow-md bg-[#7FC241] text-white;
     }
   }
 
